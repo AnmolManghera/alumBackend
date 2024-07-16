@@ -26,7 +26,10 @@ import { socketAuthenticator } from "./utils/helpers.js";
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
-  cors: corsOptions
+  cors: {
+    origin: "https://final-frontend-peer-x.vercel.app",
+    credentials: true,
+  },
 });
 
 connectDB();
@@ -41,7 +44,12 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://final-frontend-peer-x.vercel.app",
+    credentials: true,
+  })
+);
 
 app.use("/user", userRoutes);
 app.use("/chat", chatRoutes);
