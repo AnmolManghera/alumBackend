@@ -8,44 +8,40 @@
 
 Below are the available API endpoints for PeerX backend.
 
-## 🔐 Authentication APIs
+## 👤 User APIs
 
 | Method | Route | Description |
 |:------|:------|:------------|
-| POST | `/api/auth/register` | Register a new user |
-| POST | `/api/auth/login` | User login and JWT generation |
-| GET | `/api/users/profile` | Fetch current user's profile |
-| PUT | `/api/users/profile` | Update current user's profile |
+| POST | `/user/register` | Register a new user with request body |
+| POST | `/user/login` | Login a user and send cookie data |
+| GET | `/user/users` | Get all users or filtered users on the basis of query params |
+| POST | `/user/sendConnectionRequest` | Send a connection request to another user |
+| POST | `/user/acceptConnectionrequest` | Accept a connection request from another user |
+| GET | `/user/notifications` | Get notifications for the current user |
 
 ---
 
-## 💬 Chat APIs
+## 📹 Meeting/Video Call APIs
 
 | Method | Route | Description |
 |:------|:------|:------------|
-| GET | `/api/messages/:conversationId` | Get all messages in a conversation |
-| POST | `/api/messages/:conversationId` | Send a message in a conversation |
-| GET | `/api/conversations` | Fetch all conversations for user |
-| POST | `/api/conversations` | Create a new conversation (start chat) |
+| GET | `/user/schedule` | Get weekly schedule for the current user |
+| POST | `/user/updateschedule` | Update weekly availablity schedule for the current user |
+| GET | `/user/getusersforinterviews` | Get users available for a mock interview/meeting |
+| POST | `/user/requestinterview` | Request another user for a meeting |
+| POST | `/user/acceptinterviewrequest` | Accept an interview request from another user |
+| GET | `/user/interviews` | Get your scheduled meetings |
 
 ---
 
-## 🎥 Video Call APIs
+## 🗨️ Chat APIs
 
 | Method | Route | Description |
 |:------|:------|:------------|
-| GET | `/api/call/token` | Get token for initiating WebRTC PeerJS call |
-| POST | `/api/call/start/:receiverId` | Notify server about starting a call |
-| POST | `/api/call/end/:conversationId` | End a video call and update status |
-
----
-
-## 🔍 Search APIs
-
-| Method | Route | Description |
-|:------|:------|:------------|
-| GET | `/api/search/users?query=xyz` | Search users by name, company, skills |
-| GET | `/api/search/posts?query=xyz` | Search posts by keywords |
+| GET | `/chat/my` | Get all chats for the current user |
+| POST | `/chat/message` | Send a message to another user |
+| GET | `/chat/message/:id` | Get all the messages for the given chat ID |
+| GET | `/chat/:id` | Get information about the given chat ID |
 
 ---
 
